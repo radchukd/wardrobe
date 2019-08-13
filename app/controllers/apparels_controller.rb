@@ -1,10 +1,11 @@
 class ApparelsController < ApplicationController
   before_action :set_apparel, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /apparels
   # GET /apparels.json
   def index
-    @apparels = Apparel.all
+    @apparels = Apparel.all.order("created_at desc")
   end
 
   # GET /apparels/1
@@ -14,7 +15,7 @@ class ApparelsController < ApplicationController
 
   # GET /apparels/new
   def new
-    @apparel = Apparel.new
+    @apparel = current_user.apparels.build
   end
 
   # GET /apparels/1/edit
@@ -24,7 +25,7 @@ class ApparelsController < ApplicationController
   # POST /apparels
   # POST /apparels.json
   def create
-    @apparel = Apparel.new(apparel_params)
+    @apparel = current_user.apparels.build(apparel_params)
 
     respond_to do |format|
       if @apparel.save
@@ -69,6 +70,6 @@ class ApparelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apparel_params
-      params.require(:apparel).permit(:title, :description, :gender, :style, :price)
+      params.require(:apparel).permit(:title, :description, :gender, :style, :price, :image)
     end
 end
