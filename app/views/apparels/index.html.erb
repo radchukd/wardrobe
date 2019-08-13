@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Apparels</h1>
+<% content_for :header do %>
+  <h1 class="title has-text-centered">
+    Official merchandise by influencers, celebrities and independent artists
+  </h1>
+<% end %>
 
 <table>
   <thead>
@@ -10,6 +14,9 @@
       <th>Gender</th>
       <th>Style</th>
       <th>Price</th>
+      <th>Picture</th>
+      <th>Title again</th>
+      <th>Price again</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +29,9 @@
         <td><%= apparel.gender %></td>
         <td><%= apparel.style %></td>
         <td><%= apparel.price %></td>
+        <td><%= link_to image_tag(apparel.image_url(:thumb)), apparel %></td>
+        <td><%= link_to apparel.title, apparel %></td>
+        <td><%= number_to_currency(apparel.price) %></td>
         <td><%= link_to 'Show', apparel %></td>
         <td><%= link_to 'Edit', edit_apparel_path(apparel) %></td>
         <td><%= link_to 'Destroy', apparel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

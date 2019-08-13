@@ -25,5 +25,10 @@
   <%= @apparel.price %>
 </p>
 
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@apparel.image_url(:thumb)) %>
+</p>
+
 <%= link_to 'Edit', edit_apparel_path(@apparel) %> |
 <%= link_to 'Back', apparels_path %>

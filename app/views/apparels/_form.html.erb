@@ -1,17 +1,36 @@
 
-<%= simple_form_for(@apparel) do |f| %>
+<%= simple_form_for @apparel, html: { multipart: true } do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :gender %>
-    <%= f.input :style %>
-    <%= f.input :price %>
+    <%= f.input :title, required: true %>
+
+    <%= f.input :description, required: true %>
+
+    <%= f.input :gender,
+                collection: Apparel::GENDERS,
+                prompt: "Select gender" %>
+
+    <%= f.input :style,
+                required: true,
+                collection: Apparel::STYLES,
+                prompt: "Select style" %>
+
+    <%= f.input :price, required: true, input_html: { maxlength: 7 } %>
+    
+    <label class="btn btn-secondary">
+      Choose a file…
+      <span style="display:none;">
+            <%= f.input :image, 
+                        required: true,
+                        as: :file %>
+      </span>
+    </label>
+
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>

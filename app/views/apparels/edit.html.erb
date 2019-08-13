@@ -1,6 +1,6 @@
-<h1>Editing Apparel</h1>
+<h1">Editing item</h1>
 
 <%= render 'form', apparel: @apparel %>
-
+<%= link_to 'Destroy', @apparel, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Show', @apparel %> |
 <%= link_to 'Back', apparels_path %>
