@@ -14,3 +14,7 @@
  *= require_self
  */
 @import "bootstrap";
+
+a:hover, a:focus {
+    background-color: transparent;
+}

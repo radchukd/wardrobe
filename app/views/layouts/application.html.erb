@@ -4,12 +4,93 @@
     <title>Wardrobe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <%# Material icons %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background:#FFF;width:75.5%;margin: 0 auto;border:4px">
+    <%# NOTICES %>
+    <% if flash[:notice] %>
+      <div class="alert alert-primary">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <%= alert %>
+    </div>
+    <% end %>
+
+    <%# NAVBAR %>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <%= link_to root_path, class:"navbar-brand" do %>
+          <i class="material-icons">shopping_basket</i>
+          Wardrobe
+        <% end %>
+        
+        
+
+        <ul class="navbar-nav ml-auto">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+
+          <li class="nav-item">
+            <% if false %>
+              <% if total_cart_items %>
+                <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+                <i class="material-icons">shopping_cart</i>                
+                  <span>Cart
+                    <%= cart_count_over_one %>
+                  </span>
+                <% end %>
+              <% end %>
+            <% end %> 
+          </li>
+
+          <% if user_signed_in? %>
+
+            <li class="nav-item">
+              <%= link_to 'Sell your product', new_apparel_path, class: "nav-link" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to current_user.name, edit_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+
+          <% else %>
+
+            <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
+            </li>
+
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <%# HEADER %>
+
+    <% if content_for?(:header) %>
+      <%= yield(:header) %>
+    <% end %>
+
+    <%# CONTENT %>
+
     <%= yield %>
   </body>
 </html>
