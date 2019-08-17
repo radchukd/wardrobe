@@ -19,12 +19,15 @@
         <li class="list-group-item">
           <%= @apparel.description %>
         </li>
+        <li class="list-group-item">
+          <%= button_to 'Add to cart', line_items_path(apparel_id: @apparel), class: "btn btn-primary" %>
+       </li>
       </div>
     </div> 
   </div>
 
   <% if apparel_author(@apparel) %>
-    <%= link_to 'Edit', edit_apparel_path(@apparel) %> |
+    <%= link_to 'Edit', edit_apparel_path(@apparel) %>
   <% end %>
 
 </div>

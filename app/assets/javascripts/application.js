@@ -17,3 +17,15 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+document.addEventListener("turbolinks:load", function() {
+
+  var notification = document.querySelector('.notification');
+
+  if(notification) {
+    window.setTimeout(function() {
+      notification.style.display = "none";
+    }, 2000);
+  }
+
+});

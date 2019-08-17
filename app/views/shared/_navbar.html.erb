@@ -17,16 +17,11 @@
       </form>
 
       <li class="nav-item">
-        <% if false %>
-          <% if total_cart_items %>
-            <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
-              <i class="fas fa-shopping-cart"></i>
-              <span>Cart
-                <%= cart_count_over_one %>
-              </span>
-            <% end %>
-          <% end %>
-        <% end %> 
+        <%= link_to cart_path(@cart), class:"nav-link" do %>
+          <i class="fas fa-shopping-cart"></i>
+          Cart
+          <%= total_cart_items %>
+        <% end %>
       </li>
 
       <% if user_signed_in? %>

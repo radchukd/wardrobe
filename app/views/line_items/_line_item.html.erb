@@ -1,0 +1,7 @@
+<%= line_item.quantity %>
+<%= image_tag(line_item.apparel.image_url(:thumb)) %>
+<%= line_item.apparel.title %><
+<%= truncate(line_item.apparel.description, length: 140) %>
+<%= link_to 'Remove Item', line_item, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-small mb4" %>
+
+<hr/ >
