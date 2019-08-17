@@ -35,8 +35,28 @@ html {
     border-color: gray;
     background-image: none;
   	background-repeat: no-repeat;
+    border-bottom: 0.05rem ridge gray;
 }
 
 .footer-copyright {
 	background-color: #f6f6f6;
 }
+
+#wrapper {
+	margin: 2rem;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+

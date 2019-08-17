@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <%# Material icons %>
+    <script src="https://kit.fontawesome.com/57b42926de.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,9 +22,7 @@
   <% end %>
 
   <body>
-
     <%= render "shared/navbar" %>
-    <%# ADD SIDE MENU ADD ICONS TO FOOTER %>
     <%= yield %>
   </body>
 

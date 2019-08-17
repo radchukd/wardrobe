@@ -1,34 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div id="wrapper">
+  <h1 class="font-weight-bold">
+    <%= @apparel.title %>
+  </h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @apparel.title %>
-</p>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= image_tag(@apparel.image_url(:thumb)) %>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @apparel.description %>
-</p>
+    <div class="col-sm-6">
+      <div class="list-group-flush">
+        <li class="list-group-item">
+          <%= number_to_currency(@apparel.price) %>
+        </li>
+        <li class="list-group-item">
+          <%= @apparel.gender %>
+        </li>
+        <li class="list-group-item">
+          <%= @apparel.description %>
+        </li>
+      </div>
+    </div> 
+  </div>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @apparel.gender %>
-</p>
+  <% if apparel_author(@apparel) %>
+    <%= link_to 'Edit', edit_apparel_path(@apparel) %> |
+  <% end %>
 
-<p>
-  <strong>Style:</strong>
-  <%= @apparel.style %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @apparel.price %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@apparel.image_url(:thumb)) %>
-</p>
-
-<%= link_to 'Edit', edit_apparel_path(@apparel) %> |
-<%= link_to 'Back', apparels_path %>
+</div>

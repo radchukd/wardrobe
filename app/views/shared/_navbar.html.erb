@@ -4,7 +4,7 @@
   </button>
   <div class="collapse navbar-collapse">
     <%= link_to root_path, class:"navbar-brand" do %>
-      <i class="material-icons">shopping_basket</i>
+      <i class="fas fa-tag"></i>
       Wardrobe
     <% end %>
     
@@ -20,7 +20,7 @@
         <% if false %>
           <% if total_cart_items %>
             <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
-            <i class="material-icons">shopping_cart</i>                
+              <i class="fas fa-shopping-cart"></i>
               <span>Cart
                 <%= cart_count_over_one %>
               </span>
