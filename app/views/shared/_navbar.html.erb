@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse">
-    <%= link_to root_path, class:"navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <i class="fas fa-tag"></i>
       Wardrobe
     <% end %>
@@ -17,7 +17,7 @@
       </form>
 
       <li class="nav-item">
-        <%= link_to cart_path(@cart), class:"nav-link" do %>
+        <%= link_to cart_path(@cart), class: "nav-link" do %>
           <i class="fas fa-shopping-cart"></i>
           Cart
           <%= total_cart_items %>

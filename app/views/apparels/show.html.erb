@@ -1,7 +1,7 @@
 <div id="wrapper">
-  <h1 class="font-weight-bold">
+  <h2 class="font-weight-bold">
     <%= @apparel.title %>
-  </h1>
+  </h2>
 
   <div class="row">
     <div class="col-sm-6">
@@ -20,14 +20,18 @@
           <%= @apparel.description %>
         </li>
         <li class="list-group-item">
-          <%= button_to 'Add to cart', line_items_path(apparel_id: @apparel), class: "btn btn-primary" %>
-       </li>
+          <div class="row">
+            <div class="col-sm-2">
+              <%= button_to 'Add to cart', line_items_path(apparel_id: @apparel), class: "btn btn-primary" %>
+            </div>
+            <div class="col-sm-2">
+              <% if apparel_author(@apparel) %>
+                <%= button_to 'Edit', edit_apparel_path(@apparel), class: "btn btn-outline-secondary" %>
+              <% end %>
+            </div>
+          </div>
+        </li>      
       </div>
     </div> 
   </div>
-
-  <% if apparel_author(@apparel) %>
-    <%= link_to 'Edit', edit_apparel_path(@apparel) %>
-  <% end %>
-
 </div>

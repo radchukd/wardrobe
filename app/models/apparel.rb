@@ -3,7 +3,7 @@ class Apparel < ApplicationRecord
   serialize :image, JSON # For SQLite
   belongs_to :user, optional: true
   has_many :line_items, dependent: :destroy
-  before_destroy :not_referenced_by_any_line_item
+  before_destroy :not_in_cart
 
   validates :title, :description, :gender, :style, :price, :image, presence: true
   validates :title, length: { maximum: 140 }
@@ -13,10 +13,7 @@ class Apparel < ApplicationRecord
   STYLES  = %w[T-shirt Hoodie Longsleeve Jacket Accessory]
 
 private
-  def not_refereced_by_any_line_item
-    unless line_items.empty?
-      errors.add(:base, "Line items present")
-      throw :abort
-    end
+  def not_in_cart
+    errors.add(:base, "Line items present") unless line_items.empty?
   end
 end
