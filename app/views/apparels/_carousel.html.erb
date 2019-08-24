@@ -1,14 +1,13 @@
 <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%= image_tag image_url('pic1.jpg'), class: "d-block w-100", height: "680", width: "1440" %>
+      <%= image_tag image_url('carousel/pic1.jpg'), class: "d-block w-100", height: "680", width: "1440" %>
     </div>
-    <div class="carousel-item">
-      <%= image_tag image_url('pic2.jpg'), class: "d-block w-100", height: "680", width: "1440" %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag image_url('pic3.jpg'), class: "d-block w-100", height: "680", width: "1440" %>
-    </div>
+    <% (2..10).each do |i| %>
+      <div class="carousel-item">
+        <%= image_tag image_url("carousel/pic#{i}.jpg"), class: "d-block w-100", height: "680", width: "1440" %>
+      </div>
+    <% end %>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

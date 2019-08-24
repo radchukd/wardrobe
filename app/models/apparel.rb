@@ -10,7 +10,7 @@ class Apparel < ApplicationRecord
   validates :price, numericality: { only_integer: true }, length: { maximum: 140}
 
   GENDERS = %w[Male Female Unisex]
-  STYLES  = %w[T-shirt Hoodie Longsleeve Jacket Accessory]
+  STYLES  = %w[T-shirt Hoodie Longsleeve Accessory]
 
 private
   def not_in_cart

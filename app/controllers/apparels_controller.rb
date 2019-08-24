@@ -8,7 +8,13 @@ class ApparelsController < ApplicationController
     if params[:style]
       @apparels = Apparel.where(style: params[:style])
     elsif params[:gender]
-      @apparels = Apparel.where(gender: params[:gender])
+      if params[:gender] == 'Male'
+        @apparels = Apparel.where.not(gender: 'Female')
+      elsif params[:gender] == 'Female'
+        @apparels = Apparel.where.not(gender: 'Male')
+      else
+        @apparels = Apparel.all
+      end
     elsif params[:title]
       @apparels = Apparel.where('title LIKE ?', "%#{params[:title]}%")
     else

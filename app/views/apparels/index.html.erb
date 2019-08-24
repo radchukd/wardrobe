@@ -5,9 +5,10 @@
     <h5 class="font-weight-bold">Styles</h5>
     <% Apparel::STYLES.each do |style| %>
       <div class="list-group-flush">
-        <%= link_to style, {:controller => "apparels", 
-                            :action => "index",
-                            :style => style } %>
+        <%= link_to style.pluralize, {
+          :controller => "apparels", 
+          :action => "index",
+          :style => style } %>
       </div>
     <% end %>
 
@@ -17,9 +18,10 @@
     <% Apparel::GENDERS.each do |gender| %>
       <div class="list-group-flush">
         <div class="list-group-flush">
-        <%= link_to gender, {:controller => "apparels", 
-                            :action => "index",
-                            :gender => gender } %>
+        <%= link_to gender, {
+          :controller => "apparels", 
+          :action => "index",
+          :gender => gender } %>
       </div>
       </div>
     <% end %>
@@ -33,7 +35,7 @@
 
     <div class="row">
       <% @apparels.each do |apparel| %>
-        <div class="col-xs-12 col-md-4 col-sm-2">
+        <div class="col-md-4">
           <%= link_to apparel do %>
             <div class="card border-light mb-3" style="width: 18rem;">
               <%= image_tag apparel.image_url(:thumb), class: "card-img-top" %>

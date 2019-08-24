@@ -17,14 +17,12 @@
                 collection: Apparel::STYLES,
                 prompt: "Select style" %>
 
-    <%= f.input :price, required: true, input_html: { maxlength: 7 } %>
+    <%= f.input :price, required: true, input_html: { step: 0 } %>
     
     <label class="btn btn-secondary">
       Choose a file…
       <span style="display:none;">
-            <%= f.input :image, 
-                        required: true,
-                        as: :file %>
+        <%= f.input :image, required: true, as: :file %>
       </span>
     </label>
 
