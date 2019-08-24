@@ -5,12 +5,14 @@ class ApparelsController < ApplicationController
   # GET /apparels
   # GET /apparels.json
   def index
-    @apparels = Apparel.all
-
     if params[:style]
-      @apparels = @apparels.where(style: params[:style])
+      @apparels = Apparel.where(style: params[:style])
     elsif params[:gender]
-       @apparels = @apparels.where(gender: params[:gender])
+      @apparels = Apparel.where(gender: params[:gender])
+    elsif params[:title]
+      @apparels = Apparel.where('title LIKE ?', "%#{params[:title]}%")
+    else
+      @apparels = Apparel.all
     end
     @apparels.order("created_at desc")
   end
