@@ -5,7 +5,14 @@ class ApparelsController < ApplicationController
   # GET /apparels
   # GET /apparels.json
   def index
-    @apparels = Apparel.all.order("created_at desc")
+    @apparels = Apparel.all
+
+    if params[:style]
+      @apparels = @apparels.where(style: params[:style])
+    elsif params[:gender]
+       @apparels = @apparels.where(gender: params[:gender])
+    end
+    @apparels.order("created_at desc")
   end
 
   # GET /apparels/1
@@ -61,7 +68,6 @@ class ApparelsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_apparel

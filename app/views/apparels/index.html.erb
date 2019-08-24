@@ -5,9 +5,9 @@
     <h5 class="font-weight-bold">Styles</h5>
     <% Apparel::STYLES.each do |style| %>
       <div class="list-group-flush">
-        <a href="#">
-          <%= style %>
-        </a>
+        <%= link_to style, {:controller => "apparels", 
+                            :action => "index",
+                            :style => style } %>
       </div>
     <% end %>
 
@@ -16,9 +16,11 @@
     <h5 class="font-weight-bold">Genders</h5>
     <% Apparel::GENDERS.each do |gender| %>
       <div class="list-group-flush">
-        <a href="#">
-          <%= gender %>
-        </a>
+        <div class="list-group-flush">
+        <%= link_to gender, {:controller => "apparels", 
+                            :action => "index",
+                            :gender => gender } %>
+      </div>
       </div>
     <% end %>
   </div>
