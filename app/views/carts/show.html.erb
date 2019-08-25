@@ -1,38 +1,46 @@
-<table id="cart" class="table table-hover table-condensed">
-  <thead>
-    <tr>
-      <th style="width:50%">Product</th>
-      <th style="width:10%">Price</th>
-      <th style="width:8%">Quantity</th>
-      <th style="width:22%" class="text-center">Subtotal</th>
-      <th style="width:10%">
-        <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "btn btn-danger btn-sm" %>
-      </th>
-    </tr>
-  </thead>
 
-  <%= render(@cart.line_items) %>
+<% if @cart.line_items.empty? %>
+  <h2 class="text-center">
+    Your shopping cart is empty.<br>
+    <%= link_to 'Go shopping', root_path, class: "btn btn-success" %>
+  </h2> 
+<% else %>
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:50%">Product</th>
+        <th style="width:10%">Price</th>
+        <th style="width:8%">Quantity</th>
+        <th style="width:22%" class="text-center">Subtotal</th>
+        <th style="width:10%">
+          <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "btn btn-danger btn-sm" %>
+        </th>
+      </tr>
+    </thead>
 
-  <tfoot>
-    <tr>
-      <td>
-        <%= link_to root_path, class: "btn btn-warning" do %>
-          <i class="fa fa-angle-left"></i>
-          Continue Shopping
-        <% end %>
-      </td>
-      <td colspan="2" class="hidden-xs"></td>
-      <td class="text-center">
-        <strong>Total:
-          <%= number_to_currency(@cart.total_price) %>
-        </strong>
-      </td>
-      <td>
-        <%= link_to root_path, class: "btn btn-success" do %>
-          Checkout
-          <i class="fa fa-angle-right"></i>
-        <% end %>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+    <%= render(@cart.line_items) %>
+
+    <tfoot>
+      <tr>
+        <td>
+          <%= link_to root_path, class: "btn btn-warning" do %>
+            <i class="fa fa-angle-left"></i>
+            Continue Shopping
+          <% end %>
+        </td>
+        <td colspan="2" class="hidden-xs"></td>
+        <td class="text-center">
+          <strong>Total:
+            <%= number_to_currency(@cart.total_price) %>
+          </strong>
+        </td>
+        <td>
+          <%= link_to root_path, class: "btn btn-success" do %>
+            Checkout
+            <i class="fa fa-angle-right"></i>
+          <% end %>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+<% end %>

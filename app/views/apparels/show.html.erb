@@ -1,6 +1,9 @@
-<div id="wrapper">
+<div id="wrapper" class="container">
   <h2 class="font-weight-bold">
     <%= @apparel.title %>
+    <% if apparel_author(@apparel) %>
+                <%= link_to 'Edit', edit_apparel_path(@apparel), class: "btn btn-outline-secondary" %>
+              <% end %>
   </h2>
 
   <div class="row">
@@ -9,29 +12,10 @@
     </div>
 
     <div class="col-sm-6">
-      <div class="list-group-flush">
-        <li class="list-group-item">
-          <%= number_to_currency(@apparel.price) %>
-        </li>
-        <li class="list-group-item">
-          <%= @apparel.gender %>
-        </li>
-        <li class="list-group-item">
-          <%= @apparel.description %>
-        </li>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-sm-2">
-              <%= button_to 'Add to cart', line_items_path(apparel_id: @apparel), class: "btn btn-primary" %>
-            </div>
-            <div class="col-sm-2">
-              <% if apparel_author(@apparel) %>
-                <%= link_to 'Edit', edit_apparel_path(@apparel), class: "btn btn-outline-secondary" %>
-              <% end %>
-            </div>
-          </div>
-        </li>      
-      </div>
+      <%= number_to_currency(@apparel.price) %> <br>
+      <%= @apparel.description %> <br>
+      <%= @apparel.gender %> <br>
+      <%= button_to 'Add to cart', line_items_path(apparel_id: @apparel), class: "btn btn-primary" %>
     </div> 
   </div>
 </div>

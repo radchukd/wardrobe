@@ -2,7 +2,7 @@
 
 <div class="d-flex" id="wrapper">
   <div id="sidebar-wrapper">
-    <h5 class="font-weight-bold">Styles</h5>
+    <h4 class="font-weight-bold">Styles</h4>
     <% Apparel::STYLES.each do |style| %>
       <div class="list-group-flush">
         <%= link_to style.pluralize, {
@@ -14,15 +14,13 @@
 
     <br>
 
-    <h5 class="font-weight-bold">Genders</h5>
+    <h4 class="font-weight-bold">Genders</h4>
     <% Apparel::GENDERS.each do |gender| %>
       <div class="list-group-flush">
-        <div class="list-group-flush">
         <%= link_to gender, {
           :controller => "apparels", 
           :action => "index",
           :gender => gender } %>
-      </div>
       </div>
     <% end %>
   </div>
