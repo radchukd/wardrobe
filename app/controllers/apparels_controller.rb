@@ -20,7 +20,8 @@ class ApparelsController < ApplicationController
     else
       @apparels = Apparel.all
     end
-    @apparels.order("created_at desc")
+    @apparels = @apparels.order("created_at desc")
+    @apparels = @apparels.paginate(page: params[:page], per_page: 9)
   end
 
   # GET /apparels/1
